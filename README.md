@@ -8,9 +8,11 @@ style.use('ggplot')
 symbol = 'WIKI/AAPL'  # or 'AAPL.US'
 start = '2018-08-01'
 end = '2018-08-03'
-df = web.DataReader('F', 'robinhood')
-#df.loc['2015-01-02']
-print(df['close_price'])
-#df.to_csv('quotasList.csv')
-df.plot()
-plt.show()
+df = web.DataReader('AAPL', 'robinhood')
+
+#df = df.set_index('begins_at')
+
+df.reset_index(level=0, inplace=True)
+df.reset_index(level=0, inplace=True)
+df = (df[["begins_at", "close_price", "volume"]])
+print(df)
